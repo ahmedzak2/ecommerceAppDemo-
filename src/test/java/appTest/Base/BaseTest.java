@@ -1,5 +1,7 @@
 package appTest.Base;
 
+import appTest.pages.Basepage;
+import appTest.pages.Product;
 import appTest.uitily.ConfigReader;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidDriver;
@@ -40,6 +42,8 @@ public class BaseTest {
             driver = new AndroidDriver(service.getUrl(), options);
             driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
             Thread.sleep(10000);
+            Basepage basepage = new Basepage(driver);
+
         }
     }
     @AfterMethod
