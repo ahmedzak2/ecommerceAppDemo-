@@ -30,5 +30,6 @@ public class BaseTest {
     @AfterMethod
     public void tearDown() {
         DriverManager.closeDriver();
+
     }
 }
