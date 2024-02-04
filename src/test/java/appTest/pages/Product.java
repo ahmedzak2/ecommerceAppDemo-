@@ -31,7 +31,7 @@ public Product(AppiumDriver driver) {
 public void clickONFilter() {
 findeElment(filter).click();
  }
- public void chooseFormOption() throws InterruptedException {
+ public void chooseFormOption()  {
  findeElment(priceHighToLow).click();
  }
 
