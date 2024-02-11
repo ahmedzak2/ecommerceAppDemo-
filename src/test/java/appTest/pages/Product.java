@@ -8,6 +8,7 @@ import io.appium.java_client.AppiumBy;
 public class Product extends Basepage {
  public Product(AppiumDriver driver) {
   super(driver);
+
  }
 
   private By header = By.xpath("//android.view.ViewGroup[@content-desc=\"container header\"]/android.widget.TextView");
@@ -25,6 +26,11 @@ private By MenuApp = By.xpath(" //android.view.ViewGroup[@content-desc='open men
  private By cart = By.xpath("//android.view.ViewGroup[@content-desc='cart badge']");
  private By catalog = By.linkText("Catalog");
 
+ public void print(){
+  System.out.println("it enter the ship ");
+  System.out.println(driver.getStatus()+" why me Ziko ");
+
+ }
  public String getHaederName(){
  return  findeElment(header).getText();
 }

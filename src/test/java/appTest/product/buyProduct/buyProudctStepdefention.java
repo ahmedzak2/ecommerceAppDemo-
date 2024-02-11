@@ -1,6 +1,7 @@
 package appTest.product.buyProduct;
 
 import appTest.Base.BaseTest;
+import appTest.pages.Product;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -11,6 +12,7 @@ public class buyProudctStepdefention extends BaseTest {
 
     @Given("the customer is on the product page")
     public void theCustomerIsOnTheProductPage() {
+        test();
         String text = productPage.getHaederName();
         Assert.assertEquals(text, "Products");
     }

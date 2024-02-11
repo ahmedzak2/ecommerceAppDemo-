@@ -15,7 +15,7 @@ import java.time.Duration;
 public class DriverManager {
     private static AppiumDriver driver = null;
     private static AppiumDriverLocalService service;
-    private static final Logger logger = LoggerFactory.getLogger(DriverManager.class);
+    public static final Logger logger = LoggerFactory.getLogger(DriverManager.class);
 
     private DriverManager() { }
 
@@ -46,6 +46,7 @@ public class DriverManager {
                 throw e; // Rethrow the exception to signal failure in driver initialization
             }
         }
+
         return driver;
     }
 
