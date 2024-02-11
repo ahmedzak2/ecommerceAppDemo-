@@ -8,8 +8,8 @@ import io.appium.java_client.service.local.AppiumServiceBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.io.File;
 import java.net.MalformedURLException;
-import java.net.URL;
 import java.time.Duration;
 
 public class DriverManager {
@@ -22,7 +22,12 @@ public class DriverManager {
     public static synchronized AppiumDriver getDriver() throws MalformedURLException {
         if (driver == null) {
             try {
-                service = AppiumDriverLocalService.buildService(new AppiumServiceBuilder());
+                // Specify the log file for Appium server logs
+                File logFile = new File("appium.log");
+                AppiumServiceBuilder builder = new AppiumServiceBuilder()
+                        .withLogFile(logFile); // Direct server logs to the specified file
+
+                service = AppiumDriverLocalService.buildService(builder);
                 service.start();
 
                 UiAutomator2Options options = new UiAutomator2Options();
@@ -37,6 +42,7 @@ public class DriverManager {
                 logger.info("Appium driver initialized successfully");
             } catch (Exception e) {
                 logger.error("Error initializing Appium driver: ", e);
+                // It's important to log or handle the exception here to understand what went wrong.
                 throw e; // Rethrow the exception to signal failure in driver initialization
             }
         }

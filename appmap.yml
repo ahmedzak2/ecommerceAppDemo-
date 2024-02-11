@@ -1,0 +1,5 @@
+name: "mobileAppFormZero"
+appmap_dir: "tmp/appmap"
+packages:
+- path: "AppPacakage"
+- path: "appTest"

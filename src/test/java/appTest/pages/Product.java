@@ -6,7 +6,11 @@ import org.openqa.selenium.By;
 import io.appium.java_client.AppiumBy;
 
 public class Product extends Basepage {
- private By header = By.xpath("//android.view.ViewGroup[@content-desc=\"container header\"]/android.widget.TextView");
+ public Product(AppiumDriver driver) {
+  super(driver);
+ }
+
+  private By header = By.xpath("//android.view.ViewGroup[@content-desc=\"container header\"]/android.widget.TextView");
 private By filter = By.xpath("//*[contains(@content-desc, 'sort button')]/android.widget.ImageView");
 private By priceHighToLow = By.xpath("//*[contains(@content-desc, 'priceDesc')]/android.widget.TextView[2]\n");
  private By firstHighestItem = By.xpath("(//android.view.ViewGroup[@content-desc='store item']//android.widget.ImageView)[1]");
@@ -20,9 +24,6 @@ private By MenuApp = By.xpath(" //android.view.ViewGroup[@content-desc='open men
  private AppiumBy catalogMenu = (AppiumBy) AppiumBy.accessibilityId("open menu");
  private By cart = By.xpath("//android.view.ViewGroup[@content-desc='cart badge']");
  private By catalog = By.linkText("Catalog");
-public Product(AppiumDriver driver) {
-  super(driver);
- }
 
  public String getHaederName(){
  return  findeElment(header).getText();
