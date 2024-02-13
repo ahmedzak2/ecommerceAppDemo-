@@ -6,10 +6,10 @@ import org.openqa.selenium.By;
 import io.appium.java_client.AppiumBy;
 
 public class Product extends Basepage {
- public Product(AppiumDriver driver) {
+/* public Product(AppiumDriver driver) {
   super(driver);
 
- }
+ }*/
 
   private By header = By.xpath("//android.view.ViewGroup[@content-desc=\"container header\"]/android.widget.TextView");
 private By filter = By.xpath("//*[contains(@content-desc, 'sort button')]/android.widget.ImageView");

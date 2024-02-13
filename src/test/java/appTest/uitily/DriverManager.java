@@ -19,7 +19,7 @@ public class DriverManager {
 
     private DriverManager() { }
 
-    public static synchronized AppiumDriver getDriver() throws MalformedURLException {
+    public static synchronized AppiumDriver getDriver()  {
         if (driver == null) {
             try {
                 // Specify the log file for Appium server logs
