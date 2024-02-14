@@ -1,0 +1,20 @@
+<extentreports>
+    <configuration>
+        <!-- Report theme -->
+        <theme>Dark</theme>
+        <!-- Document encoding -->
+        <encoding>UTF-8</encoding>
+        <!-- Protocol for resources like CSS and JS files -->
+        <protocol>https</protocol>
+        <!-- Report title -->
+        <documentTitle>Mobile App test</documentTitle>
+        <!-- Report name -->
+        <reportName>regression package </reportName>
+        <!-- Enable timeline -->
+        <timelineEnabled>true</timelineEnabled>
+        <!-- Path to custom CSS file -->
+        <css>.report-name { color: #0000ff; }</css>
+        <!-- Path to custom JS file -->
+        <js>document.title = "Custom Title";</js>
+    </configuration>
+</extentreports>

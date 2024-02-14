@@ -34,5 +34,7 @@ public class buyProudctStepdefention extends BaseTest {
 
     @Then("the result should meet expectations")
     public void theResultShouldMeetExpectations() {
+        productPage.chooseFirstProduct();
+
     }
 }

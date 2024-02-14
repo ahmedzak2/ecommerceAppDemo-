@@ -10,7 +10,7 @@ import java.util.AbstractSet;
 @CucumberOptions(
         features = "src/test/java/appTest/product", // path to your feature files
         glue = "appTest", // the package containing your step definitions
-        plugin = {"pretty", "html:target/cucumber-reports"},
+        plugin = {"pretty", "html:target/cucumber-reports","com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"},
         monochrome = true
 )
 
