@@ -1,10 +1,14 @@
 package appTest.pages;
 
+import com.aventstack.extentreports.App;
 import io.appium.java_client.AppiumBy;
 import io.appium.java_client.AppiumDriver;
 import org.openqa.selenium.By;
 import io.appium.java_client.AppiumBy;
+import org.openqa.selenium.NoSuchElementException;
 
+import java.util.ArrayList;
+import java.util.List;
 public class Product extends Basepage {
 /* public Product(AppiumDriver driver) {
   super(driver);
@@ -23,9 +27,8 @@ private By decraseItem = By.xpath("//android.view.ViewGroup[@content-desc='count
 private By MenuApp = By.xpath(" //android.view.ViewGroup[@content-desc='open menu']/android.widget.ImageView");
 
  private AppiumBy catalogMenu = (AppiumBy) AppiumBy.accessibilityId("open menu");
- private By cart = By.xpath("//android.view.ViewGroup[@content-desc='cart badge']");
- private By catalog = By.linkText("Catalog");
 
+ private By catalog = By.linkText("Catalog");
  public void print(){
   System.out.println("it enter the ship ");
   System.out.println(driver.getStatus()+" why me Ziko ");
@@ -66,9 +69,5 @@ public void  chooseCatolg(){
 public void chooseSecondHightProduct(){
  findeElment(secondHighestItem).click();
 }
-public void clickOnCart(){
- findeElment(cart).click();
-}
-}
 
-
+}

@@ -17,7 +17,7 @@ public class BasicTestCases extends BaseTest {
     productPage.chooseCatolg();
     productPage.chooseSecondHightProduct();
     productPage.addProductToCart();
-productPage.clickOnCart();
+cartPage.clickOnCart();
     Thread.sleep(20000);
     }
 }

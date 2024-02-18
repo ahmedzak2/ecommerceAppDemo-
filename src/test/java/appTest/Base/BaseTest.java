@@ -1,19 +1,21 @@
 package appTest.Base;
 import appTest.pages.Basepage;
-import appTest.pages.Home;
+import appTest.pages.Cart;
+import appTest.pages.Login;
 import appTest.pages.Product;
-import appTest.uitily.DriverManager;
+import appTest.uitily.ConfigReader;
 import io.appium.java_client.AppiumDriver;
-import io.cucumber.java.Before;
 
 import static appTest.uitily.DriverManager.getDriver;
 import static appTest.uitily.DriverManager.logger;
 public class BaseTest  {
     public AppiumDriver driver  ;
     public  Basepage basePage = new Basepage(); ;
-    public  Home homePage = new Home() ;
+    public Cart homePage = new Cart() ;
     public  Product productPage = new Product() ;
-
+    public Cart cartPage =new Cart();
+    public ConfigReader configReader = new ConfigReader("src/test/resources/userInfoData.properties");
+  public Login login = new Login();
     public void test() {
         if (getDriver() == null) {
             logger.error("Driver did not initialize properly.");
