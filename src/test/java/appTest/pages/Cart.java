@@ -15,7 +15,9 @@ public class Cart extends Basepage{
     };
     private By priceOfitem = By.xpath("(//android.widget.TextView[@content-desc='product price'])[1])");
     private AppiumBy totalCheckout= new AppiumBy.ByAccessibilityId("total price");
-private AppiumBy ProceedToCheckoutButton = new AppiumBy.ByAccessibilityId("Proceed To Checkout button");
+private By[] ProceedToCheckoutButton = new By[]{
+        By.xpath("//android.view.ViewGroup[@content-desc='Proceed To Checkout button']/android.widget.TextView"), new AppiumBy.ByAccessibilityId("Proceed To Checkout button")
+};
 
     public void clickOnCart(){
         findElement(cart).click();
@@ -69,7 +71,6 @@ private AppiumBy ProceedToCheckoutButton = new AppiumBy.ByAccessibilityId("Proce
         return price;
     }
 public void clickOnProceedToCheckoutButton(){
-        findeElment(ProceedToCheckoutButton);
-}
+        findElement(ProceedToCheckoutButton).click();}
 
 }

@@ -58,7 +58,9 @@ Assert.assertEquals(cartPage.calculateTheTotalOfItem(), cartPage.getTotalPrice()
 
     @Then("the total cost of items shown is equal to total calculated  items")
     public void theTotalCostOfItemsShownIsEqualToTotalCalculatedItems() {
-        cartPage.clickOnProceedToCheckoutButton();
+
+
+       Assert.assertEquals(cartPage.calculateTheTotalOfItem(), cartPage.getTotalPrice(),"there wrong in calacute ");
     }
 
     @And("the customer enters username {string} and password {string}")
@@ -67,11 +69,73 @@ Assert.assertEquals(cartPage.calculateTheTotalOfItem(), cartPage.getTotalPrice()
         String passwordInput = configReader.getProperty(password);
         login.fillUserName(user);
         login.fillPassword(passwordInput);
-        Thread.sleep(20000);
+        login.clickOnlogin();
+        Thread.sleep(30000);
     }
 
-    @And("customer processed to checkOut page")
-    public void customerProcessedToCheckOutPage() {
+
+    @When("customer processed to checkOut page to buy product")
+    public void customerProcessedToCheckOutPageToBuyProduct() {
         cartPage.clickOnProceedToCheckoutButton();
+    }
+
+    @And("the customer enters fullname {string}")
+    public void theCustomerEntersFullname(String fullName) {
+        String user = configReader.getProperty(fullName);
+        checkOutPage.fillFullName(user);
+    }
+
+    @And("the customer enters city {string} and region {string} and zipCode {string} and Country {string}")
+    public void theCustomerEntersCityAndRegionAndZipCodeAndCountry(String arg0, String arg1, String arg2, String arg3) {
+        String city = configReader.getProperty(arg0);
+        String region = configReader.getProperty(arg1);
+        String zipCode = configReader.getProperty(arg2);
+        String country = configReader.getProperty(arg3);
+        checkOutPage.enterCity(city);
+        checkOutPage.enterState(region);
+        checkOutPage.fillZipCOde(zipCode);
+        checkOutPage.enterState(region);
+        checkOutPage.fillCountry(country);
+    }
+
+    @Then("customer click on to payment")
+    public void customerClickOnToPayment() {
+    checkOutPage.clickOnPayment();
+    }
+
+    @And("the customer enters address {string} and address {string}")
+    public void theCustomerEntersAddressAndAddress(String arg0, String arg1) {
+    checkOutPage.fillFirstAddresse(arg0);
+    checkOutPage.fillSecondAddresse(arg1);
+    }
+
+    @And("the customer enters fullname written on card  {string}")
+    public void theCustomerEntersFullnameWrittenOnCard(String fullName) {
+        String user = configReader.getProperty(fullName);
+        checkOutPage.fillFullName(user);
+    }
+
+    @And("The customer enter cardNumber {string}")
+    public void theCustomerEnterCardNumber(String arg0) {
+        String number = configReader.getProperty(arg0);
+        checkOutPage.fillFullName(number);
+    }
+
+    @And("The customer enter expire date  {string}")
+    public void theCustomerEnterExpireDate(String arg0) {
+        String date = configReader.getProperty(arg0);
+        checkOutPage.fillFullName(date);
+    }
+
+    @And("The customer enter security code  {string}")
+    public void theCustomerEnterSecurityCode(String arg0) {
+        String code = configReader.getProperty(arg0);
+        checkOutPage.fillFullName(code);
+    }
+
+    @And("the customer click on review order")
+    public void theCustomerClickOnReviewOrder() throws InterruptedException {
+        checkOutPage.clickOnReviewButton();
+        Thread.sleep(5000);
     }
 }
