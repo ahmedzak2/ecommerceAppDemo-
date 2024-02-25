@@ -8,6 +8,7 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.testng.Assert;
+import org.testng.asserts.Assertion;
 
 public class buyProudctStepdefention extends BaseTest {
 
@@ -58,8 +59,6 @@ Assert.assertEquals(cartPage.calculateTheTotalOfItem(), cartPage.getTotalPrice()
 
     @Then("the total cost of items shown is equal to total calculated  items")
     public void theTotalCostOfItemsShownIsEqualToTotalCalculatedItems() {
-
-
        Assert.assertEquals(cartPage.calculateTheTotalOfItem(), cartPage.getTotalPrice(),"there wrong in calacute ");
     }
 
@@ -70,7 +69,7 @@ Assert.assertEquals(cartPage.calculateTheTotalOfItem(), cartPage.getTotalPrice()
         login.fillUserName(user);
         login.fillPassword(passwordInput);
         login.clickOnlogin();
-        Thread.sleep(30000);
+
     }
 
 
@@ -118,24 +117,64 @@ Assert.assertEquals(cartPage.calculateTheTotalOfItem(), cartPage.getTotalPrice()
     @And("The customer enter cardNumber {string}")
     public void theCustomerEnterCardNumber(String arg0) {
         String number = configReader.getProperty(arg0);
-        checkOutPage.fillFullName(number);
+        checkOutPage.enterCardNumber(number);
     }
 
     @And("The customer enter expire date  {string}")
     public void theCustomerEnterExpireDate(String arg0) {
         String date = configReader.getProperty(arg0);
-        checkOutPage.fillFullName(date);
+        checkOutPage.enterExpireDate(date);
     }
 
     @And("The customer enter security code  {string}")
     public void theCustomerEnterSecurityCode(String arg0) {
         String code = configReader.getProperty(arg0);
-        checkOutPage.fillFullName(code);
+        checkOutPage.enterSecurityCode(code);
     }
 
     @And("the customer click on review order")
     public void theCustomerClickOnReviewOrder() throws InterruptedException {
         checkOutPage.clickOnReviewButton();
-        Thread.sleep(5000);
+        checkOutPage.clickOnReviewButton();
+
+        //Thread.sleep(50000);
+
+    }
+
+    @And("The customer click on place order")
+    public void theCustomerClickOnPlaceOrder() throws InterruptedException {
+        checkOutPage.clickonPlaceOrder();
+        Thread.sleep(8000);
+    }
+
+    @Then("the total cost of items shown and delivery  is equal to total calculated  items")
+    public void theTotalCostOfItemsShownAndDeliveryIsEqualToTotalCalculatedItems() {
+        Assert.assertEquals(cartPage.calculateTheAllPrices(), cartPage.getTotalPrice(),"there wrong in calacute ");
+
+    }
+
+
+
+    @And("The customer click on continue shopping")
+    public void theCustomerClickOnContinueShopping() {
+        checkOutPage.clickOnContinueShopping();
+    }
+
+
+    @Then("The checkout Complete message shown And  {string} and the order  {string}")
+    public void theCheckoutCompleteMessageShownAndAndTheOrder(String arg0, String arg1) {
+        String message = configReader.getProperty(arg0);
+        String date = configReader.getProperty(arg1);
+        Assert.assertEquals(checkOutPage.getYourOrder() , date , "there wrong in APP ");
+        Assert.assertEquals(checkOutPage.getCheckoutComplete() , message , "there wrong in APP ");
+    }
+
+    @Then("The checkout Complete message shown {string} and the order  {string}")
+    public void theCheckoutCompleteMessageShownAndTheOrder(String arg0, String arg1) {
+        String message = configReader.getProperty(arg0);
+        String date = configReader.getProperty(arg1);
+
+        Assert.assertEquals(checkOutPage.getCheckoutComplete() , message , "there wrong in APP ");
+        Assert.assertEquals(checkOutPage.getYourOrder() , date , "there wrong in APP ");
     }
 }

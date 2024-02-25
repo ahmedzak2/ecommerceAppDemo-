@@ -4,6 +4,7 @@ import appTest.uitily.DriverManager;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.PerformsTouchActions;
 import io.appium.java_client.TouchAction;
+import io.appium.java_client.touch.offset.ElementOption;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
@@ -16,12 +17,13 @@ import static io.appium.java_client.touch.offset.PointOption.point;
 
 
 public  class  Basepage {
-    public AppiumDriver driver =  DriverManager.getDriver();
+    public AppiumDriver driver = DriverManager.getDriver();
 
 
-    public WebElement findeElment(By locater){
-       return driver.findElement(locater);
+    public WebElement findeElment(By locater) {
+        return driver.findElement(locater);
     }
+
     public WebElement findElement(By[] locators) {
         for (By locator : locators) {
             List<WebElement> elements = driver.findElements(locator);
@@ -54,6 +56,7 @@ public  class  Basepage {
                 .release()
                 .perform();
     }
+
     public void scrollToElement(By locator, int maxSwipes) {
         int swipes = 0;
         while (driver.findElements(locator).isEmpty() && swipes < maxSwipes) {
@@ -61,6 +64,7 @@ public  class  Basepage {
             swipes++;
         }
     }
+
     public void scrollToElements(By[] locators, int maxSwipes) {
         int swipes = 0;
         boolean elementFound = false;
@@ -86,4 +90,32 @@ public  class  Basepage {
         }
     }
 
+    public void clickFirstAvailableElement(By[] locators) {
+        for (By locator : locators) {
+            List<WebElement> elements = driver.findElements(locator);
+            for (WebElement element : elements) {
+                if (element.isDisplayed() && element.isEnabled()) {
+                    element.click();
+                    return; // exit after the first successful click
+                }
+            }
+        }
+        throw new NoSuchElementException("No clickable element found using provided locators.");
+    }
+
+    public void pressFirstAvailableElement(By[] locators) {
+        for (By locator : locators) {
+            List<WebElement> elements = driver.findElements(locator);
+            for (WebElement element : elements) {
+                if (element.isDisplayed() && element.isEnabled()) {
+                    // Create a new TouchAction object
+                    TouchAction touchAction = new TouchAction((PerformsTouchActions) driver);
+                    // Perform press action on the element
+                    touchAction.press(ElementOption.element(element)).release().perform();
+                    return; // Exit after the first successful press
+                }
+            }
+        }
+        throw new NoSuchElementException("No pressable element found using provided locators.");
+    }
 }

@@ -18,7 +18,7 @@ public class Cart extends Basepage{
 private By[] ProceedToCheckoutButton = new By[]{
         By.xpath("//android.view.ViewGroup[@content-desc='Proceed To Checkout button']/android.widget.TextView"), new AppiumBy.ByAccessibilityId("Proceed To Checkout button")
 };
-
+private By DHLStandard = By.xpath("//android.view.ViewGroup[@content-desc='checkout delivery details']/android.widget.TextView[2]");
     public void clickOnCart(){
         findElement(cart).click();
     }
@@ -63,12 +63,29 @@ private By[] ProceedToCheckoutButton = new By[]{
         double prices= calculateTotal(pricesList);
         return prices;
     }
+    public double calculateTheTotalOfItemAndDelveriy (){
+
+        List<String> pricesList = fetchAllItemPrices();
+        double prices= calculateTotal(pricesList);
+        return prices;
+    }
     public Double getTotalPrice(){
         Double price = 0.0;
         String totalCheckoutPrice= findeElment(totalCheckout).getText();
         String sanitizedPrice = totalCheckoutPrice.replaceAll("[^\\d.]", "");
         price=  Double.parseDouble(sanitizedPrice);
         return price;
+    }
+    public Double getDeliveryPrice(){
+        Double price = 0.0;
+        String totalCheckoutPrice= findeElment(DHLStandard).getText();
+        String sanitizedPrice = totalCheckoutPrice.replaceAll("[^\\d.]", "");
+        price=  Double.parseDouble(sanitizedPrice);
+        return price;
+    }
+    public double calculateTheAllPrices(){
+      double total=calculateTheTotalOfItem()+getDeliveryPrice();
+        return total;
     }
 public void clickOnProceedToCheckoutButton(){
         findElement(ProceedToCheckoutButton).click();}
