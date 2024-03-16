@@ -37,7 +37,6 @@ public class CheckOutPage extends Basepage {
             By.xpath("//android.view.ViewGroup[@content-desc='To Payment button']"),
             new AppiumBy.ByAccessibilityId("To Payment button"),
     };
-    private By paymentMethod = By.xpath("//android.widget.ScrollView[@content-desc='checkout payment screen']/android.view.ViewGroup/android.widget.TextView[1]");
     private By[] cardNumber = new By[]{
             new AppiumBy.ByAccessibilityId("Card Number* input field"),
             By.xpath("//android.widget.EditText[@content-desc='Card Number* input field']")
@@ -68,6 +67,14 @@ public class CheckOutPage extends Basepage {
             By.xpath("//android.view.ViewGroup[@content-desc='Continue Shopping button']"),
             By.xpath("//android.view.ViewGroup[@content-desc='Review Order button']/android.widget.TextView"),
             By.linkText("Continue Shopping")
+    };
+    private By linkedIcon = By.xpath("//android.widget.ScrollView[@content-desc='checkout review order screen']/android.view.ViewGroup/android.widget.ImageView[1]");
+    private By[] paymentMethod = new By[]{
+            By.xpath("//android.view.ViewGroup[@content-desc='checkout delivery details']"),
+            By.xpath("//*[@text='Billing address is the same as shipping address']"),
+            By.xpath("//android.view.ViewGroup[@content-desc='checkout billing address']/android.widget.TextView"),
+            By.xpath("//android.widget.ScrollView[@content-desc='checkout payment screen']/android.view.ViewGroup/android.widget.TextView[1]"),
+            By.xpath("//*[@text='Payment Method']"),
     };
     public void fillFullName(String name) {
         final int MAX_TRIES = 3;
@@ -147,7 +154,12 @@ public class CheckOutPage extends Basepage {
 
 
 
+    public void scrollDownToElement() throws InterruptedException {
+        Thread.sleep(5000);
+        scrollToElements(paymentMethod,2);
+        Thread.sleep(10000);
 
+    }
 
 
 }

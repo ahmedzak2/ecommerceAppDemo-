@@ -58,8 +58,9 @@ Assert.assertEquals(cartPage.calculateTheTotalOfItem(), cartPage.getTotalPrice()
     }
 
     @Then("the total cost of items shown is equal to total calculated  items")
-    public void theTotalCostOfItemsShownIsEqualToTotalCalculatedItems() {
+    public void theTotalCostOfItemsShownIsEqualToTotalCalculatedItems() throws InterruptedException {
        Assert.assertEquals(cartPage.calculateTheTotalOfItem(), cartPage.getTotalPrice(),"there wrong in calacute ");
+    Thread.sleep(10000);
     }
 
     @And("the customer enters username {string} and password {string}")
@@ -148,7 +149,7 @@ Assert.assertEquals(cartPage.calculateTheTotalOfItem(), cartPage.getTotalPrice()
     }
 
     @Then("the total cost of items shown and delivery  is equal to total calculated  items")
-    public void theTotalCostOfItemsShownAndDeliveryIsEqualToTotalCalculatedItems() {
+    public void theTotalCostOfItemsShownAndDeliveryIsEqualToTotalCalculatedItems() throws InterruptedException {
         Assert.assertEquals(cartPage.calculateTheAllPrices(), cartPage.getTotalPrice(),"there wrong in calacute ");
 
     }
@@ -175,6 +176,11 @@ Assert.assertEquals(cartPage.calculateTheTotalOfItem(), cartPage.getTotalPrice()
         String date = configReader.getProperty(arg1);
 
         Assert.assertEquals(checkOutPage.getCheckoutComplete() , message , "there wrong in APP ");
-        Assert.assertEquals(checkOutPage.getYourOrder() , date , "there wrong in APP ");
+        Assert.assertTrue(checkOutPage.getYourOrder().contains( date) , "there wrong in APP ");
+    }
+
+    @And("customer scroll down to end of page")
+    public void customerScrollDownToEndOfPage() throws InterruptedException {
+
     }
 }

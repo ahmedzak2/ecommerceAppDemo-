@@ -1,6 +1,6 @@
 Feature: Customer buys product
 
-  Scenario Outline: Customer buys the first highest priced product
+  Scenario Outline: Customer buys the first two highest priced product
     Given the customer is on the product page
     When the customer filters the products by price
     And the customer chooses the first highest priced item
@@ -18,9 +18,9 @@ Feature: Customer buys product
     And The customer enter expire date  "<date>"
     And The customer enter security code  "<code>"
     And the customer click on review order
-  # Then the total cost of items shown and delivery  is equal to total calculated  items
+  Then the total cost of items shown and delivery  is equal to total calculated  items
     And The customer click on place order
-    Then The checkout Complete message shown "<SMS >" and the order  "<message2>"
+    Then The checkout Complete message shown "<SMS>" and the order  "<message2>"
     And  The customer click on continue shopping
     # cardNumber 3258 1265 7568 789
     Examples:
