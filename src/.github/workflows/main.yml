@@ -26,7 +26,7 @@ jobs:
           restore-keys: ${{ runner.os }}-m2
 
       - name: Run tests and generate Extent Reports
-        run: mvn verify # Or your specific Maven command to run tests
+        run: mvn test -B
 
       - name: Upload Extent Reports
         uses: actions/upload-artifact@v2
