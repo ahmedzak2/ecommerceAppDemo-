@@ -26,18 +26,20 @@ jobs:
           restore-keys: ${{ runner.os }}-m2
 
       - name: Run tests and generate Extent Reports
-        run: mvn verify # Update this with your specific Maven command to run tests and generate reports
+        run: mvn verify # Or your specific Maven command to run tests
 
-      - name: Upload Extent Reports to Artifacts
+      - name: Upload Extent Reports
         uses: actions/upload-artifact@v2
         with:
           name: extent-reports
-          path: test-output/SparkReport/*.html # Ensure this path matches where your Extent Reports are saved
-
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./test-output/SparkReport # Ensure this path matches where your Extent Reports are saved
-          publish_branch: gh-pages # The branch the action should deploy to
-          keep_files: false # Set to true if you want to keep existing files in the branch
+          path: test-output/SparkReport/*.html # Update this with the actual path to your Extent Reports
+      - name: Commit and Push Reports to gh-pages Branch
+        run: |
+          git fetch
+          git checkout gh-pages || git checkout --orphan gh-pages
+          git reset --hard origin/gh-pages || true
+          mkdir -p reports
+          cp -r test-output/SparkReport/*.html reports/
+          git add reports/
+          git commit -m "Update test reports" || echo "No changes to commit"
+          git push origin gh-pages
