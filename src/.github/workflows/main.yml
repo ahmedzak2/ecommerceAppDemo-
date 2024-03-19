@@ -32,14 +32,14 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: extent-reports
-          path: test-output/SparkReport/*.html # Update this with the actual path to your Extent Reports
+          path: src/test/test-output/SparkReport/*.html # Update this with the actual path to your Extent Reports
       - name: Commit and Push Reports to gh-pages Branch
         run: |
           git fetch
           git checkout gh-pages || git checkout --orphan gh-pages
           git reset --hard origin/gh-pages || true
           mkdir -p reports
-          cp -r test-output/SparkReport/*.html reports/
+          cp -r src/test/test-output/SparkReport/*.html reports/
           git add reports/
           git commit -m "Update test reports" || echo "No changes to commit"
           git push origin gh-pages
