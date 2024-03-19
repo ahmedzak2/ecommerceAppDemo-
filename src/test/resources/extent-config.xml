@@ -15,6 +15,22 @@
         <!-- Path to custom CSS file -->
         <css>.report-name { color: #0000ff; }</css>
         <!-- Path to custom JS file -->
-        <js>document.title = "Custom Title";</js>
-    </configuration>
+        <js>document.title = "app Demo test";</js>
+    <!-- custom javascript -->
+    <scripts>
+        <![CDATA[
+        $(document).ready(function() {
+
+        });
+      ]]>
+    </scripts>
+
+    <!-- custom styles -->
+    <styles>
+        <![CDATA[
+
+      ]]>
+    </styles>
+
+</configuration>
 </extentreports>
