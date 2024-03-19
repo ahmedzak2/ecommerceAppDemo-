@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Cart extends Basepage {
+    private  int items;
     private By[] cart = new By[]{
             By.xpath("//android.view.ViewGroup[@content-desc='cart badge']/android.widget.ImageView"),
             By.xpath("//android.view.ViewGroup[@content-desc='cart badge']"),
@@ -35,6 +36,19 @@ public class Cart extends Basepage {
             new AppiumBy.ByAccessibilityId("Place Order buttonPlace Order button"),
             By.xpath("//android.view.ViewGroup[@content-desc='Place Order button']")
     };
+    private By getPlusButtonByIndex(int index) {
+        return By.xpath("(//android.view.ViewGroup[@content-desc='counter plus button']/android.widget.ImageView)[" + index + "]");
+    }
+
+    private By getMinusButtonByIndex(int index) {
+        return By.xpath("(//android.view.ViewGroup[@content-desc='counter minus button']/android.widget.ImageView)[" + index + "]");
+    }
+    private By getNumberByIndex(int index) {
+        return By.xpath("(//android.view.ViewGroup[@content-desc='counter amount']/android.widget.TextView)[" + index + "]");
+    }
+
+
+
 
     public void clickOnCart() {
         findElement(cart).click();
@@ -152,6 +166,36 @@ public class Cart extends Basepage {
         findElement(ProceedToCheckoutButton).click();
     }
 
+public void addMoreItemOfProduct(int numberOfItem,int item ){
+for (int i =0;i<numberOfItem;i++ ){
+    findeElment(getPlusButtonByIndex(item)).click();
+}
+}
+    public void removeMoreItemOfProduct(int numberOfItem,int item ){
+        for (int i =0;i<numberOfItem;i++ ){
+            findeElment(getMinusButtonByIndex(item)).click();
+        }
+    }
+public int getNumberOfItemsAdded(int inedx){
+        WebElement item= findeElment(getNumberByIndex(inedx));
+        items= Integer.parseInt(item.getText());
+return items;
+    }
+    public int getNumberOfItemsremoved(int inedx){
+        WebElement item= findeElment(getNumberByIndex(inedx));
+       int itemsRemoved= Integer.parseInt(item.getText());
+        return itemsRemoved;
+    }
+public int totalNumberOfItem(int index2){
+
+    return  index2+1 ;
+
+    }
+    public int totalNumberOfItemAfterRemove(int index2){
+
+        return  items-index2 ;
+
+    }
 
 
 }

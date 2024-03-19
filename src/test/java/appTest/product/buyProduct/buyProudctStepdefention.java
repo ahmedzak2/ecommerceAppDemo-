@@ -1,14 +1,12 @@
 package appTest.product.buyProduct;
 
 import appTest.Base.BaseTest;
-import appTest.pages.Product;
-import appTest.uitily.ConfigReader;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.testng.Assert;
-import org.testng.asserts.Assertion;
+
 
 public class buyProudctStepdefention extends BaseTest {
 
@@ -182,5 +180,37 @@ Assert.assertEquals(cartPage.calculateTheTotalOfItem(), cartPage.getTotalPrice()
     @And("customer scroll down to end of page")
     public void customerScrollDownToEndOfPage() throws InterruptedException {
 
+    }
+
+
+    @And("The customer add items {string}for one{string} of product")
+    public void theCustomerAddItemsForOneOfProduct(String num1,String num2) throws InterruptedException {
+        int numberItems = Integer.parseInt(num1);
+        int indexItem =Integer.parseInt(num2);
+        cartPage.addMoreItemOfProduct(numberItems,indexItem);
+        Thread.sleep(6000);
+    }
+    @And("cumstomer remove itmes {string}for one{string} of product")
+    public void cumstomerRemoveItmesForOneOfProduct(String num1,String num2) throws InterruptedException {
+        int numberItems = Integer.parseInt(num1);
+        int indexItem =Integer.parseInt(num2);
+        cartPage.removeMoreItemOfProduct(numberItems,indexItem);
+        Thread.sleep(6000);
+    }
+
+    @Then("the number of item is added {string} successfully to {string} product")
+    public void theNumberOfItemIsAddedSuccessfullyToProduct(String arg0, String arg1) {
+        int numberItems = Integer.parseInt(arg0);
+        int indexItem =Integer.parseInt(arg1);
+
+        Assert.assertEquals( cartPage.getNumberOfItemsAdded(indexItem) , cartPage.totalNumberOfItem(numberItems) , "there wrong in APP ");
+    }
+
+    @Then("the number of item is removed  {string} successfully to {string} product")
+    public void theNumberOfItemIsRemovedSuccessfullyToProduct(String arg0, String arg1) {
+        int numberItems = Integer.parseInt(arg0);
+        int indexItem =Integer.parseInt(arg1);
+
+        Assert.assertEquals( cartPage.getNumberOfItemsremoved(indexItem) , cartPage.totalNumberOfItemAfterRemove(numberItems) , "there wrong in APP ");
     }
 }
