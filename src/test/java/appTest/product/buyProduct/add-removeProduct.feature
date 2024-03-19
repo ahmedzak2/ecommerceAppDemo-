@@ -30,4 +30,4 @@ Feature: Customer add or remove item form cart log
 
     Examples:
       | indexOfProduct | numberOfItems | numberOfRemovedItems |
-      | 1              | 4             | 2                    |
+      | 1              | 4             | 3                    |
