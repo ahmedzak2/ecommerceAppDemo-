@@ -40,36 +40,10 @@ private ExtentTest test;
             throw new RuntimeException("Driver did not initialize properly.");
         }
         logger.info("Appium driver initialized successfully.");
-
-        // Initialize page objects here
-        /*basePage = new Basepage(driver);
-        productPage = new Product(driver);
-        homePage = new Home(driver);*/
-        logger.info("Page objects initialized successfully.");
-        // Assuming productPage.print() is a method for debugging or logging
-        //productPage.print();
-
-        // Assuming driver.getStatus() is valid and intended for debugging or logging
-        // Note: getStatus() is not a standard Appium method. Make sure this is implemented correctly.
-        System.out.println(driver.getStatus() + " Hazem");
-
-        // Optional: Add a simple assertion or a log statement to confirm setup completion
         System.out.println("Setup completed successfully.");
     }
-   /* @Before(order = 1)
-    public void beforeScenario(Scenario scenario) {
-        // Start a new test for each scenario
-        test = extentReports.createTest(scenario.getName());
-    }*/
     @After
     public void tearDown(Scenario scenario) throws IOException {
-       /* if (scenario.isFailed()) {
-            // Assuming 'driver' is your AppiumDriver instance
-            String screenshotPath = takeScreenshot(driver, scenario.getName().replaceAll(" ", "_"));
-            test.fail("Test Failed",
-                    MediaEntityBuilder.createScreenCaptureFromPath(screenshotPath).build());
-        }
-        extentReports.flush(); // Writes test information to the report*/
         if(scenario.isFailed())
         {
             scenario.attach(getByteScreenshot(), "image/png", scenario.getName());
