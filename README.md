@@ -34,4 +34,4 @@ Follow these steps to set up the testing environment and run the automation test
 Install testing framework and dependencies
 
 Learn More
-For more detailed information about our testing practices and how you can get involved, check out our [[Home]].
+For more detailed information about our testing practices and how you can get involved, check out our [Home](https://github.com/ahmedzak2/ecommerceAppDemo-/wiki).
