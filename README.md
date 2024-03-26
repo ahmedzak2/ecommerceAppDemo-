@@ -1,10 +1,14 @@
 # eCommerce App Demo Testing Automation
 
-Welcome to the automation testing repository for the eCommerce App Demo. This project is dedicated to ensuring the highest quality and reliability of the eCommerce App Demo through comprehensive automated tests. Our testing suite covers a wide range of functionalities, including user interactions, transaction processes, and system integration.
+Welcome to the automation testing repository for the eCommerce App Demo. This project is dedicated to ensuring the highest quality and reliability of the eCommerce App Demo through comprehensive automated tests. 
+
+Our testing suite covers a wide range of functionalities, including user interactions, transaction processes, and system integration.
 
 ## Overview
 
-This repository houses the automation tests designed to validate the functionality and performance of the eCommerce App Demo. By automating our tests, we aim to facilitate consistent and efficient testing processes, allowing for rapid identification and resolution of potential issues.
+This repository houses the automation tests designed to validate the functionality and performance of the eCommerce App Demo. 
+
+By automating our tests, we aim to facilitate consistent and efficient testing processes, allowing for rapid identification and resolution of potential issues.
 
 ## Technologies Used
 
